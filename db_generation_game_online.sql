@@ -27,34 +27,22 @@ nome VARCHAR(255) NOT NULL,
 arma VARCHAR (255) NOT NULL,
 ataque BIGINT NOT NULL,
 defesa BIGINT NOT NULL,
+classes_id BIGINT,
 PRIMARY KEY (id)
 );
 
 INSERT INTO tb_personagens(nome, arma, ataque, defesa) 
-VALUES ("imani", "caminho de cacador", 2000, 1050),
-("maya", "livro Sinfonia", 4500, 2000),
-("theron", "cortadora da Neblina", 2690, 4080),
-("gwen", "espada do Sacrificio", 2990, 1000),
-("erasto", "livro do Mago", 2880, 1750),
-("elfaba", "livro Grimorio Real", 3330, 2250),
-("orion", "arcana", 2900, 1050),
-("callon", "espadao de jade", 5600, 1250);
-
-
-ALTER TABLE tb_personagens ADD classes_id BIGINT;
+VALUES ("imani", "caminho de cacador", 2000, 1050, 1),
+("maya", "livro Sinfonia", 4500, 2000, 2),
+("theron", "cortadora da Neblina", 2690, 4080, 3),
+("gwen", "espada do Sacrificio", 2990, 1000, 3),
+("erasto", "livro do Mago", 2880, 1750, 2),
+("elfaba", "livro Grimorio Real", 3330, 2250, 2),
+("orion", "arcana", 2900, 1050, 1),
+("callon", "espadao de jade", 5600, 1250, 3);
 
 ALTER TABLE tb_personagens ADD CONSTRAINT fk_personagens_classes 
 FOREIGN KEY (classes_id) REFERENCES tb_classes (id);
-
-
-UPDATE tb_personagens SET classes_id = 1 WHERE id = 1;
-UPDATE tb_personagens SET classes_id = 2 WHERE id = 2;
-UPDATE tb_personagens SET classes_id = 3 WHERE id = 3;
-UPDATE tb_personagens SET classes_id = 3 WHERE id = 4;
-UPDATE tb_personagens SET classes_id = 2 WHERE id = 5;
-UPDATE tb_personagens SET classes_id = 2 WHERE id = 6;
-UPDATE tb_personagens SET classes_id = 1 WHERE id = 7;
-UPDATE tb_personagens SET classes_id = 3 WHERE id = 8;
 
 SELECT * FROM tb_personagens;
 SELECT * FROM tb_classes;
